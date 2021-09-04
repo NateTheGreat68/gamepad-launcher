@@ -1,0 +1,6 @@
+[Unit]
+Description=Steam Big Picture Mode
+
+[Service]
+Type=oneshot
+ExecStart=/usr/games/steam -tenfoot
