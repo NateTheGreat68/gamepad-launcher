@@ -19,5 +19,5 @@ $ mkdir -p ~/.config/systemd/user
 $ cp systemd/steam_bigpicture.service ~/.config/systemd/user/
 $ systemctl --user daemon-reload
 # cp udev/99-controller.rules /etc/udev/rules.d/
-# udevadm control reload
+# udevadm control --reload
 ```
