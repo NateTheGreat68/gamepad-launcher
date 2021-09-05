@@ -1,5 +1,5 @@
 [Unit]
-Description=Steam Link - Flatpak (per-user)
+Description=Steam Link
 
 [Service]
 Type=oneshot
