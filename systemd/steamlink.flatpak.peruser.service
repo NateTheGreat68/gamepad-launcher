@@ -4,7 +4,7 @@ Description=Steam Link - Flatpak (per-user)
 [Service]
 Type=oneshot
 ExecStart=/usr/bin/flatpak run --user com.valvesoftware.SteamLink
-ExecStop=-/usr/bin/systemctl --user stop gamepad_launcher.service
+ExecStopPost=-/usr/bin/systemctl --user stop gamepad_launcher.service
 
 [Install]
 WantedBy=gamepad_launcher.service
