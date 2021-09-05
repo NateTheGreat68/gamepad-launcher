@@ -1,9 +1,9 @@
 [Unit]
-Description=Steam Big Picture Mode
+Description=Steam Big Picture Mode - Flatpak
 
 [Service]
 Type=oneshot
-ExecStart=/usr/games/steam -tenfoot
+ExecStart=/usr/bin/flatpak run com.valvesoftware.Steam -tenfoot
 ExecStop=-/usr/bin/systemctl --user stop gamepad_launcher.service
 
 [Install]
