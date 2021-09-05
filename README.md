@@ -32,7 +32,7 @@ $ mkdir -p ~/.config/systemd/user
 $ cp systemd/* ~/.config/systemd/user/
 $ systemctl --user enable <selected_application_service.service>
 $ systemctl --user daemon-reload
-# cp udev/99-gamepads.rules /etc/udev/rules.d/
+# cp udev/* /etc/udev/rules.d/
 # udevadm control --reload
 ```
 
