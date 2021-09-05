@@ -1,9 +1,9 @@
 [Unit]
-Description=Steam Big Picture Mode
+Description=Steam Link
 
 [Service]
 Type=oneshot
-ExecStart=/usr/games/steam -tenfoot
+ExecStart=/usr/bin/steamlink
 ExecStop=-/usr/bin/systemctl --user stop gamepad_launcher.service
 
 [Install]
