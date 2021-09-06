@@ -4,7 +4,7 @@ Description=Steam Big Picture Mode
 [Service]
 Type=oneshot
 ExecStart=/usr/games/steam -tenfoot
-ExecStopPost=-/usr/bin/systemctl --user stop gamepad_launcher.service
+ExecStopPost=-/usr/bin/systemctl --user stop gamepad-launcher.service
 
 [Install]
-WantedBy=gamepad_launcher.service
+WantedBy=gamepad-launcher.service

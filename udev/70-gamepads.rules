@@ -1,1 +1,1 @@
-ACTION=="add", SUBSYSTEM=="input", ENV{ID_INPUT_JOYSTICK}=="1", TAG+="systemd", ENV{SYSTEMD_USER_WANTS}="gamepad_launcher.service"
+ACTION=="add", SUBSYSTEM=="input", ENV{ID_INPUT_JOYSTICK}=="1", TAG+="systemd", ENV{SYSTEMD_USER_WANTS}="gamepad-launcher.service"
