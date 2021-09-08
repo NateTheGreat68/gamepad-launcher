@@ -1,5 +1,7 @@
 # gamepad-launcher
 
+NOTE: Significant parts of this file are no longer accurate due to changes in the codebase. It is still being included because it explains some important aspects of the decision-making with regards to the program's behavior.
+
 ## Explanation of file layout and working principles
 The goal is to launch a user-selected application when a gamepad connects to the system, then run some cleanup when the application exits.
 

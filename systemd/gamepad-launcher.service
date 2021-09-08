@@ -1,0 +1,7 @@
+[Unit]
+Description=Gamepad Launcher (and cleaner) service
+
+[Service]
+Type=oneshot
+ExecStart=echo "gamepad-launcher starting"
+ExecStop=echo "gamepad-launcher cleaning up"
