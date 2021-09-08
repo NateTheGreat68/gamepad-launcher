@@ -7,7 +7,7 @@ Note: as it currently exists, this is written for and only tested on a particula
 There are three components:
 * a udev rule
   * The udev rule triggers when a device mapped to /dev/input/js0 is added to the system.
-  * It attempts to start a systemd user unit called `gamepad_launcher.service` when triggered.
+  * It attempts to start a systemd user unit called `gamepad-launcher.service` when triggered.
 * the main systemd service unit
   * The systemd service is intended to be run by a systemd user instance.
   * By default, this service doesn't *do* anything - it's meant for other services to attach onto and start with, or to be extended via systemd override conf files.
