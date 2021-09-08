@@ -3,5 +3,5 @@ Description=Gamepad Launcher (and cleaner) service
 
 [Service]
 Type=oneshot
-RemainAfterExit=yes
-ExecStop=-/usr/bin/sudo -n systemctl restart xow
+ExecStart=echo "gamepad-launcher starting"
+ExecStop=echo "gamepad-launcher cleaning up"
