@@ -17,11 +17,34 @@ usage(){
 	exit 1
 }
 
+# Handle the suggestions action.
+suggestions(){
+	echo "Launch: each application is first presented as its command if installed"
+	echo "directly, then as a Flatpak command if applicable. Don't forget to use"
+	echo "flatpak --user run ... if you installed an application in per-user mode."
+	echo "  Steam (Big Picture Mode):"
+	echo "    steam -tenfoot"
+	echo "    flatpak run com.valvesoftware.Steam -tenfoot"
+	echo "  SteamLink:"
+	echo "    steamlink"
+	echo "    flatpak run com.valvesoftware.SteamLink"
+	echo
+	echo "Cleanup: these commands are primarily used to turn off gamepads when an"
+	echo "application exits."
+	echo "  Turn off gamepads using the xow driver (requires NOPASSWD setup):"
+	echo "    sudo systemctl restart xow"
+
+	exit 0
+}
+
 # Set the PATH variable for the service.
 set_path(){
 	# Find the path to store the override file.
 	local override_file="$(get_override_file $OVERRIDE_PATH)"
 
+	# Without writing the user's current path into the service definitions,
+	# some systems don't have the full path (for example, /usr/games and
+	# /usr/local/games may be absent).
 	echo -e "[Service]\nEnvironment=PATH="\""$PATH"\" > "$override_file"
 	[[ $? -ne 0 ]] && exit $?
 }
@@ -49,7 +72,7 @@ launch(){
 	else
 		# Write to the file, writing the path first.
 		set_path
-		echo -e "[Service]\nExecStart=$(which $1) ${@:2}" > "$override_file" &&
+		echo -e "[Service]\nExecStart=-$(which $1) ${@:2}" > "$override_file" &&
 			systemctl --user daemon-reload
 		exit $?
 	fi
@@ -78,30 +101,10 @@ cleanup(){
 	else
 		# Write to the file, writing the path first.
 		set_path
-		echo -e "[Service]\nExecStopPost=$(which $1) ${@:2}" >> "$override_file" &&
+		echo -e "[Service]\nExecStopPost=-$(which $1) ${@:2}" >> "$override_file" &&
 			systemctl --user daemon-reload
 		exit $?
 	fi
-}
-
-# Handle the suggestions action.
-suggestions(){
-	echo "Launch: each application is first presented as its command if installed"
-	echo "directly, then as a Flatpak command if applicable. Don't forget to use"
-	echo "flatpak --user run ... if you installed an application in per-user mode."
-	echo "  Steam (Big Picture Mode):"
-	echo "    steam -tenfoot"
-	echo "    flatpak run com.valvesoftware.Steam -tenfoot"
-	echo "  SteamLink:"
-	echo "    steamlink"
-	echo "    flatpak run com.valvesoftware.SteamLink"
-	echo
-	echo "Cleanup: these commands are primarily used to turn off gamepads when an"
-	echo "application exits."
-	echo "  Turn off gamepads using the xow driver (requires NOPASSWD setup):"
-	echo "    sudo systemctl restart xow"
-
-	exit 0
 }
 
 # Find (or make) the filename to use for the specified override file.
