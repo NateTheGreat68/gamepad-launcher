@@ -1,5 +1,7 @@
-BIN_DIR ?= /usr/local/bin
+PREFIX := /usr/local
+EXEC_PREFIX := $(PREFIX)
+BINDIR := $(EXEC_PREFIX)/bin
 
 install:
-	install -d $(DESTDIR)$(BIN_DIR)/
-	install -m 755 gamepad-launcher.sh $(DESTDIR)$(BIN_DIR)/
+	install -d $(DESTDIR)$(BINDIR)/
+	install -m 755 gamepad-launcher.sh $(DESTDIR)$(BINDIR)/
