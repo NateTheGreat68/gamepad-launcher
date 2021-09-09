@@ -1,4 +1,4 @@
-SYSTEMD_USER_UNIT_DIR ?= $(shell pkg-config systemd --variable=systemduserunitdir)
+SYSTEMD_USER_UNIT_DIR := $(shell pkg-config systemd --variable=systemduserunitdir)
 
 install:
 	install -d $(DESTDIR)$(SYSTEMD_USER_UNIT_DIR)/
