@@ -1,4 +1,4 @@
-UDEVDIR := /etc/udev/rules.d
+UDEVDIR := $(shell pkg-config udev --variable=udevdir)/rules.d
 
 install:
 	install -d $(DESTDIR)$(UDEVDIR)/
